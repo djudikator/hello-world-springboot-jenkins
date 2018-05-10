@@ -9,3 +9,18 @@ docker-compose -f docker-compose-build.yml build
 
 #runing with compose - see docker-compose.yml
 docker-compose up -d
+
+# jenkins initial pwd b0face9e727244c983ffaec8cd332f6e
+
+#run docker inside container
+https://getintodevops.com/blog/building-your-first-docker-image-with-jenkins-2-guide-for-developers
+
+docker run -d -p 8080:8080 \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  --name jenkins \
+  jenkins/jenkins:lts
+
+chmod 777 /var/run/docker.sock
+
+
+https://getintodevops.com/blog/the-simple-way-to-run-docker-in-docker-for-ci
