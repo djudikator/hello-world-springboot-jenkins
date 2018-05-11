@@ -15,9 +15,8 @@ public class Application {
 
     @RequestMapping("/")
     public String home() {
-        System.out.println("ENV_1=" + System.getenv().get("ENV_1"));
         long result = visitorService.saveVisit();
-        return "Hello Docker World. Count = " + result;
+        return "Hello Docker World. Count = " + result + "ENV_1=" + System.getenv().get("ENV_1");
     }
 
     public static void main(String[] args) {
