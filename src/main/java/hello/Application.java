@@ -16,7 +16,14 @@ public class Application {
     @RequestMapping("/")
     public String home() {
         long result = visitorService.saveVisit();
-        return "Hello Docker World. Count = " + result + "ENV_1=" + System.getenv().get("ENV_1");
+        StringBuilder sb = new StringBuilder();
+        sb.append("MYSQL_ROOT_HOST =").append(System.getenv().get("MYSQL_ROOT_HOST")).append(" ");
+        sb.append("DB_HOST =").append(System.getenv().get("DB_HOST")).append(" ");
+        sb.append("DB_PORT =").append(System.getenv().get("DB_PORT")).append(" ");
+        sb.append("DB_USER =").append(System.getenv().get("DB_USER")).append(" ");
+        sb.append("DB_PASSWORD =").append(System.getenv().get("DB_PASSWORD"));
+
+        return "Hello Docker World. Count = " + result + "Env Vars: " + sb.toString();
     }
 
     public static void main(String[] args) {
